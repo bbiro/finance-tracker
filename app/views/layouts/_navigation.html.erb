@@ -13,15 +13,17 @@
             <%= link_to "My Portfolio", my_portfolio_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <%= link_to "My Friends", my_friends_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
+              <%= link_to edit_user_registration_path, class: "dropdown-item" do%>
+                <%= fa_icon "edit" %> Edit profile
+              <%end%>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
@@ -32,7 +34,8 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mr-2">
-          <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger btn-xs" %></li>
+          <li class="nav-item mr-2 mt-2"><%= fa_icon "user" %> <%= current_user.full_name %></li>
+          <li class="nav-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger btn-xs" %></li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

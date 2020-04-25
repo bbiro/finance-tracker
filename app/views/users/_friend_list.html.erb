@@ -1,0 +1,27 @@
+<div class="results-block">
+    <%= render 'layouts/messages' %>
+  </div>
+  <% if @my_friends && !@my_friends.empty? %>
+  <div class="row">
+      <div class="col-9">
+          <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @my_friends.each do |friend| %>  
+                <tr>
+                  <th scope="row"><%=friend.full_name%></th>
+                  <td><%=friend.email%></td>
+                  <td><%= link_to 'Remove',  '', method: :delete, data: {confirm: "Are you sure?"}, remote: true, class: 'btn btn-warning btn-sm' %></td>
+                </tr>
+                  <%end%>
+              </tbody>
+            </table>
+      </div>
+  </div>
+  <%end%>
