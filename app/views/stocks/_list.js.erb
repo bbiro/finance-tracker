@@ -1,0 +1,6 @@
+document.querySelector("#tracked_stocks").innerHTML = '<%= j render 'stocks/list.html' %>'
+//debugger;
+if (document.querySelector("#add-button") != null) {
+    document.querySelector("#add-button").hidden = true;
+}
+//j is for escape_javascript(render 'users/result.html')
