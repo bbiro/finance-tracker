@@ -1,16 +1,19 @@
 <div class="results-block">
     <%= render 'layouts/messages' %>
 </div>
-<% if @user %>
-    <div class="card card-header results-block">
-        <strong>Full name: </strong><%= @user.full_name%>
-        <strong>Email: </strong><%= @user.email%>
-        <% if current_user.email != @user.email%>
-            <%= link_to 'Add as friend', '#', class: 'btn btn-xs btn-success', id: "add-button", method: :post, remote: true %> 
+<% if !@users.blank? %>
+    <% @users.each do |user| %>
+    <div class="card card-header results-block mb-3">
+        <strong>Full name: </strong><%= user.full_name%>
+        <strong>Email: </strong><%= user.email%>
+        <%= link_to "View Profile", user_path(user), class: 'btn btn-sm btn-success' %>
+        <% if current_user.not_friends_with?(user.id)%>
+            <%= link_to 'Add as friend', friendships_path(friend: user), class: 'btn btn-sm btn-success', id: "add-button", method: :post, remote: true %> 
         <% else %>
             <div class="badge badge-secondary">
-                You can't add yourself as friend
+                You are already friends
             </div>
         <%end%>
-    </div>
+    </div><br />
+    <%end%>
 <%end%>

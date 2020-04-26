@@ -1,6 +1,4 @@
 document.querySelector("#friends_list").innerHTML = '<%= j render 'users/friend_list.html' %>'
-//debugger;
-if (document.querySelector("#add-button") != null) {
-    document.querySelector("#add-button").hidden = true;
-}
+document.querySelector("#search").value = ''
+document.querySelector("#friend_results").innerHTML = ''
 //j is for escape_javascript(render 'users/result.html')

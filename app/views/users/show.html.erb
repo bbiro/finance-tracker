@@ -1,0 +1,25 @@
+<H2>User details</H2>
+<div class="results-block">
+    <%= render 'layouts/messages' %>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <%= @user.full_name%>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.email%></h5>
+      <p class="card-text">Friend status</p>
+      <% if current_user.not_friends_with?(@user.id)%>
+          <%= link_to 'Add as friend', friendships_path(friend: user), class: 'btn btn-sm btn-success', id: "add-button", method: :post, remote: true %> 
+      <% else %>
+          <div class="badge badge-secondary">
+              You are already friends
+          </div>
+      <%end%>
+    </div>
+  </div>
+
+  <div id="tracked_stocks">
+    <%= render 'stocks/list' %>
+</div>

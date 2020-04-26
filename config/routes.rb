@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :user_stocks, only: [:create, :destroy]
   devise_for :users
   root 'welcome#index'
@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   get 'search_friend', to: 'users#search'
 
   get 'unfriend', to: 'users#search'
+  post 'add_to_my_portfolio', to: 'user_stocks#add_to_portfolio'
+
+  resources :friendships, only: [:create, :destroy]
+  resources :users, only: [:show]
 
 end
